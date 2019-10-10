@@ -15,6 +15,7 @@ public class OrderUpdateEvent {
     public static class OrderDto {
         private String orderId;
         private Integer side;
+        private Integer close;
         private Integer type;
         private Integer status;
         private Long userId;

@@ -18,7 +18,7 @@ public class AssetExample {
         ApiClientFactory factory = ApiClientFactory.newInstance(apiKey, apiSecret);
         ApiRestClient client = factory.newRestClient();
 
-        AssetResponse assets = client.getAsset(null);
+        AssetResponse assets = client.getAsset(2001l);
         System.out.println(assets);
     }
 }

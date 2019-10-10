@@ -31,12 +31,23 @@ public class ApiClientFactory {
         return new ApiRestClientImpl(apiKey, apiSecret);
     }
 
+    public ApiRestClient newRestClient(String restUrl) {
+        return new ApiRestClientImpl(apiKey, apiSecret, restUrl);
+    }
+
     public ApiAsyncRestClient newAsyncRestClient() {
         return new ApiAsyncRestClientImpl(apiKey, apiSecret);
+    }
+
+    public ApiAsyncRestClient newAsyncRestClient(String restUrl) {
+        return new ApiAsyncRestClientImpl(apiKey, apiSecret, restUrl);
     }
 
     public ApiSocketClient newWebSocketClient() {
         return new ApiSocketClientImpl(this.apiKey, this.apiSecret, ApiServiceGenerator.getSharedClient());
     }
 
+    public ApiSocketClient newWebSocketClient(String socketUrl) {
+        return new ApiSocketClientImpl(this.apiKey, this.apiSecret, ApiServiceGenerator.getSharedClient(), socketUrl);
+    }
 }

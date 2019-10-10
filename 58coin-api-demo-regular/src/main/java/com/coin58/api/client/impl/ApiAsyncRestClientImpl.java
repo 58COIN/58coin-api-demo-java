@@ -19,6 +19,10 @@ public class ApiAsyncRestClientImpl implements ApiAsyncRestClient {
         apiService = ApiServiceGenerator.createService(ApiService.class, apiKey, secret);
     }
 
+    public ApiAsyncRestClientImpl(String apiKey, String secret, String restUrl) {
+        apiService = ApiServiceGenerator.createService(ApiService.class, apiKey, secret, restUrl);
+    }
+
     @Override
     public void getContractList(ApiCallback<List<Contract>> callback) {
         apiService.getContractList().enqueue(new ApiCallbackAdapter<>(callback));

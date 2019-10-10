@@ -29,6 +29,7 @@ public class ApiSocketClientImpl implements ApiSocketClient {
 
     private String secret;
 
+    private String socketUrl = ApiConstants.WS_API_BASE_URL;
 
 //    public ApiSocketClientImpl(OkHttpClient client){
 //        this.client = client;
@@ -39,6 +40,15 @@ public class ApiSocketClientImpl implements ApiSocketClient {
         this.client = client;
         this.apiKey = apiKey;
         this.secret = secret;
+    }
+
+    public ApiSocketClientImpl(String apiKey, String secret, OkHttpClient client, String socketUrl) {
+
+        this.client = client;
+        this.apiKey = apiKey;
+        this.secret = secret;
+
+        this.socketUrl = socketUrl;
     }
 
     @Override
@@ -79,7 +89,7 @@ public class ApiSocketClientImpl implements ApiSocketClient {
 
 
     public Closeable createWebSocket(String channel, WebSocketListener webSocketListener) {
-        String streamingUrl = String.format("%s?streams=%s", ApiConstants.WS_API_BASE_URL, channel);
+        String streamingUrl = String.format("%s?streams=%s", socketUrl, channel);
 
         Request.Builder builder = new Request.Builder()
                 .url(streamingUrl);

@@ -22,7 +22,6 @@ public class FillListExample {
         ApiRestClient client = factory.newRestClient();
 
         List<FillListResponse> orderFills = client.getFillList(2001L, 0, 10);
-
         orderFills.forEach(orderFill -> {
             System.out.println(orderFill);
         });

@@ -59,7 +59,7 @@ public interface ApiService {
     @FormUrlEncoded
     @Headers(ApiConstants.ENDPOINT_HEADER_API_KEY)
     @POST("/v1/regular/order/place")
-    Call<NewOrderResponse> newOrder(@Field("contractId") long contractId, @Field("type") int type, @Field("side") int side, @Field("leverage") Integer leverage, @Field("size") int size,
+    Call<NewOrderResponse> newOrder(@Field("contractId") long contractId, @Field("type") Integer type, @Field("side") Integer side, @Field("leverage") Integer leverage, @Field("size") Integer size,
                                     @Field("price") BigDecimal price, @Field("close") Integer close);
 
     @FormUrlEncoded
@@ -78,21 +78,25 @@ public interface ApiService {
 
     @Headers({ApiConstants.HEADER_CONTENT_TYPE_JSON, ApiConstants.ENDPOINT_HEADER_API_KEY})
     @GET("/v1/regular/order/list")
-    Call<List<OrderListResponse>> getOrderList(@Query("contractId") long contractId, @Query("side") int side, @Query("close") int close);
+    Call<List<OrderListResponse>> getOrderList(@Query("contractId") long contractId, @Query("side") Integer side, @Query("close") Integer close);
 
     @Headers({ApiConstants.HEADER_CONTENT_TYPE_JSON, ApiConstants.ENDPOINT_HEADER_API_KEY})
     @GET("/v1/regular/order/fill/list")
-    Call<List<FillListResponse>> getFillList(@Query("contractId") long contractId, @Query("close") int close, @Query("limit") int limit);
+    Call<List<FillListResponse>> getFillList(@Query("contractId") long contractId, @Query("close") Integer close, @Query("limit") Integer limit);
+
+    @Headers({ApiConstants.HEADER_CONTENT_TYPE_JSON, ApiConstants.ENDPOINT_HEADER_API_KEY})
+    @GET("/v1/regular/order/finish")
+    Call<FinishOrderResponse> getFinishOrder(@Query("orderId") long orderId);
 
     @Headers({ApiConstants.HEADER_CONTENT_TYPE_JSON, ApiConstants.ENDPOINT_HEADER_API_KEY})
     @GET("/v1/regular/position/list")
-    Call<JSONObject> getPositionList(long contractId);
+    Call<JSONObject> getPositionList(@Query("contractId") long contractId);
 
     @FormUrlEncoded
     @Headers(ApiConstants.ENDPOINT_HEADER_API_KEY)
     @POST("/v1/regular/order/plan/close")
-    Call<JSONObject> newPlanOrder(@Field("contractId") long contractId, @Field("side") int side, @Field("triggerPrice") String triggerPrice, @Field("size") int size, @Field("mode") int mode,
-                                  @Field("type") int type, @Field("price") String price);
+    Call<JSONObject> newPlanOrder(@Field("contractId") long contractId, @Field("side") Integer side, @Field("triggerPrice") String triggerPrice, @Field("size") Integer size, @Field("mode") Integer mode,
+                                  @Field("type") Integer type, @Field("price") String price);
 
     @FormUrlEncoded
     @Headers(ApiConstants.ENDPOINT_HEADER_API_KEY)
@@ -107,4 +111,10 @@ public interface ApiService {
     @Headers({ApiConstants.HEADER_CONTENT_TYPE_JSON, ApiConstants.ENDPOINT_HEADER_API_KEY})
     @GET("/v1/regular/order/plan/list")
     Call<List<PlanListResponse>> getPlanList(@Query("contractId") long contractId, @Query("limit") Integer limit);
+
+
+    @Headers({ApiConstants.HEADER_CONTENT_TYPE_JSON, ApiConstants.ENDPOINT_HEADER_API_KEY})
+    @GET("/v1/regular/ledger/list")
+    Call<List<LedgerResponse>> getLedgetList(@Query("contractId") Long contractId, @Query("action") Integer action, @Query("startDate") Long startDate, @Query("endDate") Long endDate, @Query("curPage") Integer curPage, @Query("pageSize") Integer pageSize);
+
 }

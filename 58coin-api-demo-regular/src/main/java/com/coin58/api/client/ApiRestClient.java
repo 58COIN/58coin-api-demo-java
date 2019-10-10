@@ -52,4 +52,22 @@ public interface ApiRestClient {
     JSONObject getWallet();
 
     JSONObject accountTransfer(long contractId, long action, BigDecimal amount);
+
+    /**
+     * 获取账单信息
+     * @param contractId
+     * @param action
+     * @param startDate
+     * @param endDate
+     * @param curPage
+     * @return
+     */
+    List<LedgerResponse> getLedgetList(Long contractId, Integer action, Long startDate, Long endDate, Integer curPage, Integer pageSize);
+
+    /**
+     * 获取已完成订单的信息
+     * @param orderId
+     * @return
+     */
+    FinishOrderResponse getFinishOrder(long orderId);
 }

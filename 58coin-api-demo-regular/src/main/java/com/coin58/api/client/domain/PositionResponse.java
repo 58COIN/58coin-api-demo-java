@@ -18,7 +18,7 @@ public class PositionResponse {
     private Long id;
     private Long userId;
     private Long contractId;
-    private Integer leverage;
+    private BigDecimal leverage;
     private Integer positionType;
     private Integer side;
     private BigDecimal entryPrice;
@@ -32,6 +32,7 @@ public class PositionResponse {
     private BigDecimal positionValue;
     private Integer planProfitQty;
     private Integer planLossQty;
+    private BigDecimal profitRate;
     private Long createdDate;
     private Long modifyDate;
 
@@ -57,6 +58,7 @@ public class PositionResponse {
                 ",positionValue=" + positionValue +
                 ",planProfitQty=" + planProfitQty +
                 ",planLossQty=" + planLossQty +
+                ",profitRate=" + profitRate +
                 ",createdDate=" + createdDate +
                 ",modifyDate=" + modifyDate +
                 "}";

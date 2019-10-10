@@ -42,7 +42,13 @@ public class ApiServiceGenerator {
     }
 
     public static <S> S createService(Class<S> serviceClass, String apiKey, String secret) {
-        Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(ApiConstants.REST_API_BASE_URL).addConverterFactory(converterFactory);
+
+        return createService(serviceClass, apiKey, secret, ApiConstants.REST_API_BASE_URL);
+    }
+
+
+    public static <S> S createService(Class<S> serviceClass, String apiKey, String secret, String restUrl){
+        Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(restUrl).addConverterFactory(converterFactory);
 
         if (StringUtils.isEmpty(apiKey) || StringUtils.isEmpty(secret)) {
             retrofitBuilder.client(sharedClient);
@@ -56,7 +62,6 @@ public class ApiServiceGenerator {
         Retrofit retrofit = retrofitBuilder.build();
         return retrofit.create(serviceClass);
     }
-
     /**
      * Execute a REST call and block until the response is received.
      */

@@ -3,6 +3,7 @@ package com.coin58.api.client.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.coin58.api.client.ApiRestClient;
 import com.coin58.api.client.domain.*;
+import retrofit2.http.Query;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +17,10 @@ public class ApiRestClientImpl implements ApiRestClient {
 
     public ApiRestClientImpl(String apiKey, String secret) {
         apiService = ApiServiceGenerator.createService(ApiService.class, apiKey, secret);
+    }
+
+    public ApiRestClientImpl(String apiKey, String secret, String restUrl) {
+        apiService = ApiServiceGenerator.createService(ApiService.class, apiKey, secret, restUrl);
     }
 
     public JSONObject transfer(String currencyName, Integer triggerSiteId, Integer targetSiteId, String amount) {
@@ -122,5 +127,30 @@ public class ApiRestClientImpl implements ApiRestClient {
     @Override
     public JSONObject accountTransfer(long contractId, long action, BigDecimal amount) {
         return ApiServiceGenerator.executeSync(apiService.accountTransfer(contractId, action, amount));
+    }
+
+    /**
+     * 获取账单信息
+     * @param contractId
+     * @param action
+     * @param startDate
+     * @param endDate
+     * @param curPage
+     * @return
+     */
+    @Override
+    public List<LedgerResponse> getLedgetList(Long contractId, Integer action,  Long startDate, Long endDate, Integer curPage, Integer pageSize) {
+        return ApiServiceGenerator.executeSync(apiService.getLedgetList(contractId, action,startDate,endDate,curPage, pageSize));
+    }
+
+
+    /**
+     * 获取已完成订单的状态
+     * @param orderId
+     * @return
+     */
+    @Override
+    public FinishOrderResponse getFinishOrder(long orderId) {
+        return ApiServiceGenerator.executeSync(apiService.getFinishOrder(orderId));
     }
 }

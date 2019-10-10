@@ -96,7 +96,7 @@ public class SocketExample {
     public void subKline() throws Exception {
         CountDownLatch latch = new CountDownLatch(1);
         ApiSocketClient socketClient = ApiClientFactory.newInstance().newWebSocketClient();
-        socketClient.onKlineEvent("2001", KlineIntervalEnum.ONE_MINUTE, new ApiCallback<KlineEvent>() {
+        socketClient.onKlineEvent("2001", KlineIntervalEnum.FIVE_MINUTES, new ApiCallback<KlineEvent>() {
             @Override
             public void onConnected(SubMessage message) {
                 //                System.out.println("message = [" + JSON.toJSONString(message) + "]");

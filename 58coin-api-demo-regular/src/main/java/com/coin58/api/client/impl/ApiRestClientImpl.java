@@ -3,7 +3,7 @@ package com.coin58.api.client.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.coin58.api.client.ApiRestClient;
 import com.coin58.api.client.domain.*;
-import retrofit2.http.Query;
+import com.coin58.api.common.impl.ApiServiceGenerator;
 
 import java.math.BigDecimal;
 import java.util.List;

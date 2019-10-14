@@ -2,17 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <groupId>com.58coin.open</groupId>
         <artifactId>58coin-api-demo-java</artifactId>
+        <groupId>com.58coin.open</groupId>
         <version>1.0.0</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>58coin-api-demo-regular</artifactId>
-    <version>1.0.0</version>
+    <artifactId>58coin-api-demo-common</artifactId>
 
     <properties>
         <com.squareup.retrofit2.version>2.4.0</com.squareup.retrofit2.version>
@@ -21,12 +18,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.58coin.open</groupId>
-            <artifactId>58coin-api-demo-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
@@ -98,5 +89,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -13,6 +13,8 @@
     <modules>
         <module>./58coin-api-demo-regular</module>
         <module>./58coin-api-demo-spot</module>
+        <module>58coin-api-demo-future</module>
+        <module>58coin-api-demo-common</module>
     </modules>
 
     <distributionManagement>

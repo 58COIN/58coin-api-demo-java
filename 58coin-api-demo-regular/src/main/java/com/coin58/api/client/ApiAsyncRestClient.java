@@ -3,6 +3,7 @@ package com.coin58.api.client;
 import com.coin58.api.client.domain.Contract;
 import com.coin58.api.client.domain.NewOrder;
 import com.coin58.api.client.domain.NewOrderResponse;
+import com.coin58.api.common.ApiCallback;
 
 import java.util.List;
 

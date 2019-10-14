@@ -2,12 +2,12 @@ package com.coin58.api.webSocketExamples;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.coin58.api.client.ApiCallback;
+import com.coin58.api.common.ApiCallback;
 import com.coin58.api.client.ApiClientFactory;
-import com.coin58.api.client.ApiSocketClient;
-import com.coin58.api.client.domain.enums.KlineIntervalEnum;
-import com.coin58.api.client.domain.event.*;
-import com.coin58.api.client.util.ZipUtil;
+import com.coin58.api.common.ApiSocketClient;
+import com.coin58.api.common.enums.KlineIntervalEnum;
+import com.coin58.api.common.event.*;
+import com.coin58.api.common.util.ZipUtil;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;

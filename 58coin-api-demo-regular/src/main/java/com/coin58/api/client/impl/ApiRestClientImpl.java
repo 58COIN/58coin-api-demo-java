@@ -29,7 +29,7 @@ public class ApiRestClientImpl implements ApiRestClient {
 
     @Override
     public List<AssetsResponse> getAssets(int siteId) {
-        return ApiServiceGenerator.executeSync(apiService.getAssets(12));
+        return ApiServiceGenerator.executeSync(apiService.getAssets(siteId));
     }
 
     @Override

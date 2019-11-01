@@ -136,7 +136,7 @@ public class SocketExample {
         CountDownLatch latch = new CountDownLatch(1);
         String apiKey = "878b54f5-1066-428d-a50c-5d267c38d54b";
         String apiSecret = "E5D41EC220365995CDFBB6C0B63F7599";
-        ApiClientFactory.newInstance(apiKey, apiSecret).newWebSocketClient().onOrderUpdateEvent("swaps", new ApiCallback<OrderUpdateEvent>() {
+        ApiClientFactory.newInstance(apiKey, apiSecret).newWebSocketClient().onOrderUpdateEvent("usdt", new ApiCallback<OrderUpdateEvent>() {
             @Override
             public void onConnected(SubMessage message) {
                 //                System.out.println("message = [" + JSON.toJSONString(message) + "]");

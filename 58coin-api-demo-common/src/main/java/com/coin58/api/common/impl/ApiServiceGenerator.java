@@ -1,5 +1,6 @@
 package com.coin58.api.common.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.coin58.api.common.ConverterFactory;
 import com.coin58.api.common.HttpStatusEnum;
 import com.coin58.api.common.RestResult;
@@ -68,8 +69,14 @@ public class ApiServiceGenerator {
     public static <T> T executeSync(Call<T> call) {
         try {
             Response<T> response = call.execute();
+
             if (!response.isSuccessful()) {
                 int code = response.code();
+                RestResult restResult = JSON.parseObject(response.errorBody().string(), RestResult.class);
+                if (restResult != null) {
+                    throw new ApiException(restResult.getMessage());
+                }
+
                 throw new ApiException(HttpStatusEnum.of(code).getMessage());
             }
 

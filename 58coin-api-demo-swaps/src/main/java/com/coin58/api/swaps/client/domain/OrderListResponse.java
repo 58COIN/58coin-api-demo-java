@@ -12,24 +12,21 @@ import java.math.BigDecimal;
  */
 @Data
 public class OrderListResponse {
+
+
     private Long id;
     private Long userId;
     private Long contractId;
-    private String contractName;
-    private Integer priceType;
+    private Integer type;
     private Integer side;
-    private BigDecimal hold;
-    private BigDecimal leverage;
     private BigDecimal price;
+    private BigDecimal avgPrice;
     private Integer size;
-    private Integer executedSize;
     private Integer status;
-    private Integer liquidation;
+    private Integer executedSize;
     private Integer close;
-    private BigDecimal askPrice;
-    private BigDecimal bidPrice;
-    private BigDecimal indexPrice;
-    private long createdDate;
+    private Integer liquidation;
+    private long createdTime;
 
     @Override
     public String toString() {
@@ -37,21 +34,16 @@ public class OrderListResponse {
                 "id=" + id +
                 ",userId=" + userId +
                 ",contractId=" + contractId +
-                ",contractName=" + contractName +
-                ",priceType=" + priceType +
+                ",type=" + type +
                 ",side=" + side +
-                ",hold=" + hold +
-                ",leverage=" + leverage +
                 ",price=" + price +
                 ",size=" + size +
                 "executedSize=" + executedSize +
                 ",status=" + status +
                 ",liquidation=" + liquidation +
                 ",close=" + close +
-                ",askPrice=" + askPrice +
-                ",bidPrice=" + bidPrice +
-                ",indexPrice=" + indexPrice +
-                ",createdDate=" + createdDate +
+                ",avgPrice=" + avgPrice +
+                ",createdTime=" + createdTime +
                 "}";
     }
 }

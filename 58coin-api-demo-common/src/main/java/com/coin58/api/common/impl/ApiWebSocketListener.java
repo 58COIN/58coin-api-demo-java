@@ -56,9 +56,9 @@ public class ApiWebSocketListener<T> extends WebSocketListener {
 
     @Override
     public void onFailure(WebSocket webSocket, Throwable t, Response response) {
-        if (!closing) {
+//        if (!closing) {
             callback.onFailure(t);
-        }
+//        }
     }
 
     @Override

@@ -128,13 +128,13 @@ public class ApiRestClientImpl implements ApiRestClient {
     }
 
 
-//    /**
-//     * 获取已完成订单的状态
-//     * @param orderId
-//     * @return
-//     */
-//    @Override
-//    public FinishOrderResponse getFinishOrder(long orderId) {
-//        return ApiServiceGenerator.executeSync(apiService.getFinishOrder(orderId));
-//    }
+    /**
+     * 获取已完成订单的状态
+     * @param orderId
+     * @return
+     */
+    @Override
+    public FinishOrderResponse getFinishOrder(long orderId) {
+        return ApiServiceGenerator.executeSync(apiService.getFinishOrder(orderId));
+    }
 }

@@ -57,10 +57,10 @@ public interface ApiRestClient {
      */
     List<LedgerResponse> getLedgerList(Integer action, Long startDate, Long endDate, Integer curPage, Integer pageSize);
 
-//    /**
-//     * 获取已完成订单的信息
-//     * @param orderId
-//     * @return
-//     */
-//    FinishOrderResponse getFinishOrder(long orderId);
+    /**
+     * 获取已完成订单的信息
+     * @param orderId
+     * @return
+     */
+    FinishOrderResponse getFinishOrder(long orderId);
 }

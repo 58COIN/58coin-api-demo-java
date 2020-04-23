@@ -22,7 +22,7 @@ public class ApiWebSocketListener<T> extends WebSocketListener {
 
     private Class<T> eventClass;
 
-    private volatile boolean closing = false;
+//    private volatile boolean closing = false;
 
     public ApiWebSocketListener(ApiCallback callback, Class eventClass) {
 
@@ -33,7 +33,7 @@ public class ApiWebSocketListener<T> extends WebSocketListener {
 
     @Override
     public void onOpen(WebSocket webSocket, Response response) {
-        ping(webSocket);
+//        ping(webSocket);
     }
 
     @Override
@@ -46,7 +46,16 @@ public class ApiWebSocketListener<T> extends WebSocketListener {
     public void onMessage(WebSocket webSocket, ByteString bytes) {
         try {
             String content = ZipUtil.uncompress(bytes.toByteArray());
-            if (StringUtils.isBlank(content) || content.contains("pong")) return;
+            if (StringUtils.isBlank(content)) return;
+
+
+            if(content.contains("ping")){
+                SubMessage subMessage = JSON.parseObject(content, SubMessage.class);
+                if("ping".equalsIgnoreCase(subMessage.getEvent())){
+                    webSocket.send("{\"event\":\"pong\",\"ts\":" + subMessage.getTs() + "}");
+                    return;
+                }
+            }
             T obj = JSON.parseObject(content, eventClass);
             callback.onResponse(obj);
         } catch (Exception e) {
@@ -63,7 +72,8 @@ public class ApiWebSocketListener<T> extends WebSocketListener {
 
     @Override
     public void onClosing(WebSocket webSocket, int code, String reason) {
-        closing = true;
+//        closing = true;
+        callback.onClosing(webSocket, code, reason);
     }
 
     @Override
@@ -76,9 +86,9 @@ public class ApiWebSocketListener<T> extends WebSocketListener {
      */
     private ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
 
-    public void ping(WebSocket socket) {
-        scheduledThreadPool.scheduleAtFixedRate(() -> {
-            socket.send("{\"event\":\"ping\"}");
-        }, 30, 60, TimeUnit.SECONDS);
-    }
+//    public void ping(WebSocket socket) {
+//        scheduledThreadPool.scheduleAtFixedRate(() -> {
+//            socket.send("{\"event\":\"ping\"}");
+//        }, 30, 60, TimeUnit.SECONDS);
+//    }
 }

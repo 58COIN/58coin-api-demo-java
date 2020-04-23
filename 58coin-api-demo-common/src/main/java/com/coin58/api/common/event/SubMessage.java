@@ -10,6 +10,8 @@ public class SubMessage {
      */
     private String event;
 
+    private Long ts;
+
     private String product;
 
     /**

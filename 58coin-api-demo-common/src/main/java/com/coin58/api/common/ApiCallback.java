@@ -2,6 +2,7 @@ package com.coin58.api.common;
 
 
 import com.coin58.api.common.event.SubMessage;
+import okhttp3.WebSocket;
 
 /**
  * ApiCallback is a functional interface used together with the ApiAsyncClient to provide a non-blocking REST client.
@@ -24,6 +25,10 @@ public interface ApiCallback<T> {
      * @param cause the cause of the failure
      */
     default void onFailure(Throwable cause) {
+    }
+
+    default void onClosing(WebSocket webSocket, int code, String reason){
+
     }
 
     /**

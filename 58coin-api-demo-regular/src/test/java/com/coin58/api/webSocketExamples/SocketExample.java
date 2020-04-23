@@ -25,7 +25,7 @@ public class SocketExample {
     public void subTicker() throws Exception {
         CountDownLatch latch = new CountDownLatch(1);
         ApiSocketClient socketClient = ApiClientFactory.newInstance().newWebSocketClient();
-        socketClient.onTickerEvent("2001", new ApiCallback<TickerEvent>() {
+        socketClient.onTickerEvent("etc_usdt", new ApiCallback<TickerEvent>() {
             @Override
             public void onConnected(SubMessage message) {
                 //                System.out.println("message = [" + JSON.toJSONString(message) + "]");
@@ -48,8 +48,17 @@ public class SocketExample {
             }
 
             @Override
+            public void onClosing(WebSocket webSocket, int code, String reason) {
+                System.out.println("webSocket = [" + webSocket + "], code = [" + code + "], reason = [" + reason + "]");
+                latch.countDown();
+
+            }
+
+            @Override
             public void onClosed(int code, String reason) {
                 System.out.println("code = [" + code + "], reason = [" + reason + "]");
+                latch.countDown();
+
             }
         });
 

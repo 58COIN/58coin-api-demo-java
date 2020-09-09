@@ -16,6 +16,7 @@
         <module>58coin-api-demo-future</module>
         <module>58coin-api-demo-common</module>
         <module>58coin-api-demo-swaps</module>
+        <module>58coin-api-demo-mix</module>
     </modules>
 
     <distributionManagement>
